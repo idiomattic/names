@@ -6,7 +6,7 @@
   #"[a-z]+-[a-z]+")
 
 (def numbered-adj+noun-pattern
-  #"[a-z]+-[a-z]+[0-9]{4}")
+  #"[a-z]+-[a-z]+-[0-9]{4}")
 
 (deftest unseeded-generator-test
   (testing "Can generate random words"
@@ -18,6 +18,17 @@
         (let [next-n (sut/next-n gen 15)]
           (is (= 15 (count next-n)))
           (is (every? #(and (string? %) (re-seq adj+noun-pattern %)) next-n)))))))
+
+(deftest numbered-generator-test
+  (testing "Can generate random words with number suffixes"
+    (let [gen (sut/create {:numbered? true})
+          next-word (sut/next gen)]
+      (is (string? next-word))
+      (is (re-seq numbered-adj+noun-pattern next-word))
+      (testing "Can generate many numbered words"
+        (let [next-n (sut/next-n gen 15)]
+          (is (= 15 (count next-n)))
+          (is (every? #(and (string? %) (re-seq numbered-adj+noun-pattern %)) next-n)))))))
 
 (deftest seeded-generator-test
   (testing "Can generate random words using a seed"
