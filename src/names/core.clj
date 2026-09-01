@@ -3,17 +3,20 @@
   (:require [clojure.java.io :as io]
             [clojure.string :as str]))
 
-(def nouns
+(def default-nouns
   (-> (io/resource "nouns.txt")
       (slurp)
       (str/split-lines)))
 
-(def adjectives
+(def default-adjectives
   (-> (io/resource "adjectives.txt")
       (slurp)
       (str/split-lines)))
 
-(defn- next* [{:keys [numbered?] :or {numbered? false}} gen]
+(defn- next* [{:keys [adjectives nouns numbered?]
+               :or {adjectives default-adjectives
+                    nouns default-nouns
+                    numbered? false}} gen]
   (let [noun-idx (.nextInt gen (dec (count nouns)))
         adj-idx (.nextInt gen (dec (count adjectives)))]
     (if numbered?
