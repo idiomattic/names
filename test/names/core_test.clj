@@ -27,3 +27,12 @@
       (is (= '("disillusioned-sound" "adhesive-stove" "picayune-mailbox" "rich-dinosaurs" "dreary-snow" "animated-cook")
              (sut/next-n gen-1 6)
              (sut/next-n gen-2 6))))))
+
+(deftest numbered-seeded-generator-test
+  (testing "Can generate random words using a seed"
+    (let [gen-1 (sut/create {:seed 5 :numbered? true})
+          gen-2 (sut/create {:seed 5 :numbered? true})]
+      (is (= "neat-grandfather-3474" (sut/next gen-1) (sut/next gen-2)))
+      (is (= '("hushed-believe-7605" "painful-hen-7722" "certain-pigs-5303" "jagged-creator-3428" "mindless-umbrella-0215" "coherent-development-0308")
+             (sut/next-n gen-1 6)
+             (sut/next-n gen-2 6))))))
