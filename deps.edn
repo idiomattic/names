@@ -9,4 +9,4 @@
                  {:mvn/version "0.10.11"}
                  slipset/deps-deploy {:mvn/version "0.2.2"}}
           :ns-default build}
-  :neil {:project {:name names/names}}}}
+  :neil {:project {:name net.clojars.idiomattic/names}}}}

@@ -3,7 +3,7 @@
   (:require [clojure.tools.build.api :as b]
             [deps-deploy.deps-deploy :as dd]))
 
-(def lib 'net.clojars.names/names)
+(def lib 'net.clojars.idiomattic/names)
 (def version (format "0.1.%s" (b/git-count-revs nil)))
 (def class-dir "target/classes")
 
@@ -18,19 +18,19 @@
   opts)
 
 (defn- pom-template [version]
-  [[:description "FIXME: my new library."]
-   [:url "https://github.com/names/names"]
+  [[:description "A library for generating random, human-friendly names (e.g. delicate-firefly), inspired by the Rust names crate."]
+   [:url "https://github.com/idiomattic/names"]
    [:licenses
     [:license
-     [:name "Eclipse Public License"]
-     [:url "http://www.eclipse.org/legal/epl-v10.html"]]]
+     [:name "MIT License"]
+     [:url "https://opensource.org/licenses/MIT"]]]
    [:developers
     [:developer
-     [:name "Matthewlese"]]]
+     [:name "idiomattic"]]]
    [:scm
-    [:url "https://github.com/names/names"]
-    [:connection "scm:git:https://github.com/names/names.git"]
-    [:developerConnection "scm:git:ssh:git@github.com:names/names.git"]
+    [:url "https://github.com/idiomattic/names"]
+    [:connection "scm:git:https://github.com/idiomattic/names.git"]
+    [:developerConnection "scm:git:ssh:git@github.com:idiomattic/names.git"]
     [:tag (str "v" version)]]])
 
 (defn- jar-opts [opts]
