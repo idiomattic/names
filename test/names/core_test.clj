@@ -47,3 +47,9 @@
       (is (= '("perpetual-hospital-7605" "steady-snail-7722" "boring-need-5303" "dynamic-shop-3428" "mighty-pest-0215" "nonstop-drawer-0308")
              (sut/next-n gen-1 6)
              (sut/next-n gen-2 6))))))
+
+(deftest custom-vocabulary-generator-test
+  (testing "Can provide custom adjective and noun lists"
+    (let [gen (sut/create {:adjectives ["imaginary"]
+                           :nouns ["roll"]})]
+      (is (= "imaginary-roll" (sut/next gen))))))
