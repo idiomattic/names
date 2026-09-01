@@ -11,13 +11,13 @@ A small Clojure library for generating random, human-friendly names such as
 deps.edn:
 
 ```clojure
-net.clojars.idiomattic/names {:mvn/version "0.1.x"}
+net.clojars.idiomattic/names {:mvn/version "0.9.x"}
 ```
 
 Leiningen/Boot:
 
 ```clojure
-[net.clojars.idiomattic/names "0.1.x"]
+[net.clojars.idiomattic/names "0.9.x"]
 ```
 
 ## Usage
