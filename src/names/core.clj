@@ -17,8 +17,8 @@
                :or {adjectives default-adjectives
                     nouns default-nouns
                     numbered? false}} gen]
-  (let [noun-idx (.nextInt gen (dec (count nouns)))
-        adj-idx (.nextInt gen (dec (count adjectives)))]
+  (let [noun-idx (.nextInt gen (count nouns))
+        adj-idx (.nextInt gen (count adjectives))]
     (if numbered?
       (format "%s-%s-%04d" (get adjectives adj-idx) (get nouns noun-idx) (mod (.nextInt gen 10000) 10000))
       (format "%s-%s" (get adjectives adj-idx) (get nouns noun-idx)))))
