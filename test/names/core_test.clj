@@ -3,10 +3,10 @@
             [names.core :as sut]))
 
 (def adj+noun-pattern
-  #"[a-z]+-[a-z]+")
+  #"^(?:[a-z]+-)+[a-z]+$")
 
 (def numbered-adj+noun-pattern
-  #"[a-z]+-[a-z]+-[0-9]{4}")
+  #"^(?:[a-z]+-)+[a-z]+-[0-9]{4}$")
 
 (deftest unseeded-generator-test
   (testing "Can generate random words"
